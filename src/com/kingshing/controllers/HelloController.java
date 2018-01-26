@@ -15,6 +15,12 @@ import com.kingshing.entries.User;
 
 @Controller
 public class HelloController {
+	/**
+	 *  页面跳转 request传值
+	 * @param name
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/hello.do")
 	public String say(String name, Model model) {
 		model.addAttribute("name", "==" + name);
@@ -42,13 +48,17 @@ public class HelloController {
 		}
 
 	}
-
+	/**
+	 *  ajax 简单对象的双向传递
+	 * @param User
+	 * @return User
+	 */
 	@RequestMapping(value = "/ajaxObj.do")
 	public @ResponseBody User testAjaxObj(@ModelAttribute User user) {
 		System.out.println(user);
 		User u = new User();
-		u.setName("kingshing");
-		u.setPassword("123");
+		u.setUserName("kingshing叶");
+		u.setUserPswd("123");
 		return u;
 	}
 }

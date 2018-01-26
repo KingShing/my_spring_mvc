@@ -8,7 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.kingshing.entries.User;
 
 @Controller
 public class HelloController {
@@ -35,5 +39,15 @@ public class HelloController {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	
+	@RequestMapping(value="/ajaxObj.do")
+	public @ResponseBody User testAjaxObj(@ModelAttribute User user) {
+		System.out.println(user);
+		User u  =new User();
+		u.setName("kingshing");
+		u.setPassword("123");
+		return u;		
 	}
 }
